@@ -1,0 +1,41 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP.Net Core app to Azure Web App - javatec
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.402'
+
+    - name: Build with dotnet
+      run: dotnet build -c Release
+
+    - name: Next.js cache
+      uses: actions/cache@v2
+      with:
+        path: ${{ github.workspace }}/WebApp/ClientApp/.next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+
+    - name: dotnet publish
+      run: dotnet publish --no-self-contained -r linux-x64 -c Release -o ${{env.DOTNET_ROOT}}/myapp
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'javatec'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_7f45bd24f51b4b06bf723655c52a63f0 }}
+        package: ${{env.DOTNET_ROOT}}/myapp 

@@ -1,0 +1,55 @@
+﻿@model IAsyncEnumerable<TaskItem>
+
+@{
+    ViewBag.Title = "List of To-Do TaskItems";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var taskItems = new List<TaskItem>();
+    await foreach (var taskItem in Model)
+    {
+        taskItems.Add(taskItem);
+    }
+}
+
+<h2>Welcome to MVC version of Todo List!</h2>
+<p>This app was starting point for the <a href="/reactapp">React version</a> of this app</p>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Owner</th>
+        <th>Modified</th>
+        <th>Completed</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in taskItems)
+    {
+        <tr>
+            <td>
+                @(item.Name)
+            </td>
+            <td>
+                @(item.Description)
+            </td>
+            <td>
+                @(item.Owner)
+            </td>
+            <td>
+                @($"{item.Modified:g}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Completed)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>

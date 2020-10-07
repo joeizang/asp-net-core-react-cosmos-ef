@@ -1,0 +1,46 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="ReturnUrl" />
+
+    <div class="form-group col-4">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-4">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-4">
+        <button type="reset"
+                class="btn btn-secondary">
+            Cancel
+        </button>
+        <button type="submit"
+                class="btn btn-success px-4">
+            Login
+        </button>
+    </div>
+</form>
+
+<p>
+    Switch between these users to check that it's not possible to edit other users tasks in React App.
+    <ul>
+        <li>user1/password</li>
+        <li>user2/password</li>
+    </ul>
+</p>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

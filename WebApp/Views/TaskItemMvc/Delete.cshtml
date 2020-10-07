@@ -1,0 +1,46 @@
+﻿@model WebApp.Models.TaskItem
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete a To-Do Item</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @(Model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @(Model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Completed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Completed)
+        </dd>
+    </dl>
+
+    <div>
+        <form method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

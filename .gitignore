@@ -1,0 +1,8 @@
+.vs/
+WebApp/ClientApp/package-lock.json
+WebApp/Properties/launchSettings.json
+WebApp/wwwroot/lib/
+node_modules/
+WebApp/ClientApp/.next/
+WebApp/ClientApp/out/
+WebApp/ClientApp/.idea/
