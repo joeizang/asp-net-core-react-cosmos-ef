@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{53B7D7E0-EADC-4CBB-B2A2-B902756A512C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8DC7B3A8-A3DF-48B0-9C36-F713C92AE043}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\master_javatec.yml = .github\workflows\master_javatec.yml
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
